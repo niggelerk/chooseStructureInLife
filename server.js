@@ -1,15 +1,21 @@
+#!/bin/env node
+
 var express = require('express')
-const app = express()
+var app = express()
 var favicon = require('serve-favicon')
 var path = require('path')
 var http = require('http').Server(app)
-var io = module.exports = require('socket.io')(http)
-var socket = require('./server/socket')(io)
 
-var storage = require('./server/storage')
 
-app.use(cors({origin:'https://projekte.milabor.ch/chooseStructureInLife/'}))
+app.use(favicon(path.join(__dirname, 'public/favicon.ico')))
+app.use('/public', express.static(__dirname + '/public'))
+app.use('/', require('./server/routes'))
 
-app.use(favicon(path.join(__dirname, 'favicon.ico')))
-app.use(express.static(__dirname + '/client'))
-app.use('/',require('./server/routes'))
+
+// network
+app.set('port', process.env.PORT || 3200)
+app.set('ip', "127.0.0.1")
+
+http.listen(app.get('port'), app.get('ip'), function() {
+  console.log('listening on *:' + app.get('port'));
+});
