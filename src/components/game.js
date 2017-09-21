@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom'
 
 class Game extends React.Component{
 
-  componentWillMount(){
-
-  }
+  componentWillMount(){}
 
   render(){
     return (
@@ -15,9 +13,7 @@ class Game extends React.Component{
     )
   }
 
-  componentDidMount(){
-
-  }
+  componentDidMount(){}
 }
 
 export default Game

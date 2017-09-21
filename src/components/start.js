@@ -1,23 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
-  Link
+ Link
 } from 'react-router-dom'
 import {
-  Icon,
-  Button
+ Icon,
+ Button
 } from 'antd'
 
 class Start extends React.Component {
-  render() {
-    return (
-      <Link to = "/editor" >
-      <Button type = "default" > Zum Editor < /Button>
-      </Link>
-    )
-  }
+ render() {
+  return (
+   <Link to = "/editor" >
+    <Button type = "default" > Zum Editor < /Button>
+   </Link>
+  )
+ }
 }
-
-
-
 export default Start
