@@ -11,19 +11,27 @@ import {Row,Col} from 'antd'
 @observer
 class Editor extends React.Component {
  render() {
+   const store = storeEditor
+
   return(
    <div>
     <Row >
-     {storeEditor.images.map((url, index) => {
-      let style = {backgroundImage: "url(" + url + ")"}
+     {storeEditor.images.map((item, index) => {
+      let style = {backgroundImage: "url(" + item.url + ")"}
       return(
-       <Col xs={24} sm={4} md={6} lg={2} key={index}>
-        <div className = "block" style = {style} > </div>
+       <Col xs={24} sm={6} md={4} lg={3} key={index}>
+        <div className = "block" style = {style} >
+         <Button onClick={storeEditor.removeImage.bind(this,item.id)}>
+          x
+         </Button>
+         <div className = "star"> {index+1} </div>
+        </div>
        </Col >)})
       }
-      <Col xs={24} sm={4} lg={2}>
-       <Dropzone onDrop = {storeEditor.uploadFile}>
-       </Dropzone>
+      <Col xs={24} sm={6} md={4} lg={3}>
+       <div className="block">
+        <Dropzone onDrop = {storeEditor.uploadFile}> </Dropzone>
+       </div>
       </Col >
     </Row>
    </div>)

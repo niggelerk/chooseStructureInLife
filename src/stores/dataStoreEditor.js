@@ -4,24 +4,30 @@ import superagent from 'superagent'
 
 class DataStoreEditor {
  @observable images = [
-  "https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Australia.png",
-  "https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Australia.png",
-  "https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Australia.png",
-  "https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Australia.png",
-  "https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Australia.png",
-  "https://upload.wikimedia.org/wikipedia/commons/e/e0/Map_of_Australia.png"
+  {url:"https://www.lonelyplanet.com/maps/pacific/australia/map_of_australia.jpg", id: 1},
+  {url:"https://www.lonelyplanet.com/maps/pacific/australia/map_of_australia.jpg", id: 2},
+  {url:"https://www.lonelyplanet.com/maps/pacific/australia/map_of_australia.jpg", id: 3},
+  {url:"https://www.lonelyplanet.com/maps/pacific/australia/map_of_australia.jpg", id: 4}
  ]
 
- @action.bound removeImage() {
+ @action.bound removeImage(indexToRemove) {
   if (this.images.length !== 0) {
-   this.images.splice(-1, 1)
+   let indexToDelete = 0
+   for (let i = 0; i < this.images.length; i++) {
+     let item = this.images[i]
+     if (item.id === indexToRemove) {
+       indexToDelete = i
+       break
+     }
+   }
+   this.images.splice(indexToDelete, 1)
   }
  }
 
  @action.bound uploadFile(files) {
   const image = files[0],
    cloudName = 'niggelerk',
-   url = 'https://api.cloudinary.com/v1_1/' + cloudName + '/image/upload',
+   url = "https://api.cloudinary.com/v1_1/" + cloudName + '/image/upload',
    timestamp = Date.now() / 1000,
    uploadPreset = 'jxfez55y',
    paramsStr = 'timestamp=' + timestamp + '&upload_preset=' + uploadPreset + 'K4t5YbqayvEUomp8Th5OcC2tvNM',
@@ -40,7 +46,7 @@ class DataStoreEditor {
     alert(err);
     return
    }
-    this.images.push(resp.body.secure_url)
+    this.images.push({url:resp.body.secure_url, id:45})
    })
   }
 }

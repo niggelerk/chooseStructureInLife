@@ -10,3 +10,11 @@
  background-repeat: no-repeat;
  background-size: contain;
 }
+
+.star {
+  background-image: url('../../src/pictures/star.png');
+  min-height: 20px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
