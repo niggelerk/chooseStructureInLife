@@ -12,9 +12,11 @@
 }
 
 .star {
-  background-image: url('../../src/pictures/star.png');
-  min-height: 20px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3b/Star_icon.png');
+  min-height: 30px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
+  font-size: 2em;
+  text-align: center;
 }
