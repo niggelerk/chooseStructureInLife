@@ -1,3 +1,18 @@
+body {
+  width:100%;
+  min-height:100%;
+  margin:0px;
+  padding:20px;
+}
+
+#app {
+ width:100%;
+ height:100%;
+}
+
+.sortableHelper {
+   z-index: 10000 !important;
+}
 
 .dropzone{
  height: inherit;
@@ -11,6 +26,14 @@
  background-size: contain;
 }
 
+.originalSize {
+  height: 65vw;
+  min-height: 65vw;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .star {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3b/Star_icon.png');
   min-height: 30px;
@@ -19,4 +42,29 @@
   background-size: contain;
   font-size: 2em;
   text-align: center;
+}
+
+.editor-root {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  width:100%;
+  height:100%;
+}
+
+.editor-wrapper {
+  width: 100%;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.editor-item {
+  min-width:150px;
+  min-height:150px;
+  width: 15%;
+  background-color: red;
+  display:inline-block;
+  white-space: nowrap;
+  margin: 5px;
 }
